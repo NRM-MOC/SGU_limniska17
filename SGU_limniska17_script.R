@@ -40,7 +40,8 @@ SGU <- prc_data %>%
          MATOSAKERHET = NA
          )
 
-SGU <- left_join(SGU, read_csv("lab_details.csv"), by = c("PARAMETERNAMN", "LABB")) # Lab details taken from limnic 2018
+SGU <- left_join(SGU, read_csv("lab_details.csv"), by = c("PARAMETERNAMN", "LABB")) %>% # Lab details taken from limnic 2018 
+  mutate(ANTAL_DAGAR = 1)
 
 
 moc_write_SGU(SGU, "DATA_MATVARDE", "limniska17_DATA_MATVARDE.xlsx", program = "limn")
